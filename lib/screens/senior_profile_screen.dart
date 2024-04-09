@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vitpair/services/vtop.dart';
+import 'package:vitpair/controllers/vtop.dart';
 import 'package:vitpair/utils/colors.dart';
 
 class SeniorProfileScreen extends StatefulWidget {
