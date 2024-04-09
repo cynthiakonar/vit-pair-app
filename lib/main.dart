@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:vitpair/login_screen.dart';
+import 'package:vitpair/screens/senior_home_screen.dart';
 // import 'package:vitpair/senior_home_screen.dart';
 // import 'package:vitpair/screens/junior_home_screen.dart';
 // import 'package:vitpair/screens/senior_home_screen.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
       ),
-      home: LoginScreen(),
+      home: SeniorHomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
