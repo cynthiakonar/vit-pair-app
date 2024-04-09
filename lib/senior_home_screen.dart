@@ -13,14 +13,14 @@ import 'package:vitpair/settings_screen.dart';
 import 'package:vitpair/utils/colors.dart';
 import 'package:vitpair/widgets/group_tile.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class SeniorHomeScreen extends StatefulWidget {
+  const SeniorHomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SeniorHomeScreen> createState() => _SeniorHomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SeniorHomeScreenState extends State<SeniorHomeScreen> {
   int _selectedIndex = 0;
   String userName = "";
   String email = "";
