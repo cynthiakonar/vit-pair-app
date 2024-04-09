@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:vitpair/login_screen.dart';
+import 'package:vitpair/screens/junior_home_screen.dart';
 import 'package:vitpair/screens/senior_home_screen.dart';
 import 'package:vitpair/splash_screen.dart';
 
