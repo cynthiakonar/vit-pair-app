@@ -13,8 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        fontFamily: 'Poppins',
       ),
-      home: JuniorHomeScreen(),
+      home: const JuniorHomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
