@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vitpair/senior_profile_screen.dart';
+import 'package:vitpair/settings_screen.dart';
 import 'package:vitpair/utils/colors.dart';
 import 'package:vitpair/widgets/choice_card.dart';
 
@@ -59,31 +61,32 @@ class _JuniorHomeScreenState extends State<JuniorHomeScreen> {
                         purpleGradientEnd,
                         "Chat with Senior",
                         "Last seen 22h ago",
-                        "assets/connect.png"),
+                        "assets/connect.png",
+                        const SeniorProfileScreen()),
                     choiceCard(
-                      context,
-                      orangeGradientStart,
-                      orangeGradientEnd,
-                      "Senior Profile",
-                      "Sahil Agarwal",
-                      "assets/girl.png",
-                    ),
+                        context,
+                        orangeGradientStart,
+                        orangeGradientEnd,
+                        "Senior Profile",
+                        "Sahil Agarwal",
+                        "assets/girl.png",
+                        const SeniorProfileScreen()),
                     choiceCard(
-                      context,
-                      greenGradientStart,
-                      greenGradientEnd,
-                      "Pair New Senior",
-                      "128 Seniors",
-                      "assets/boy.png",
-                    ),
+                        context,
+                        greenGradientStart,
+                        greenGradientEnd,
+                        "Pair New Senior",
+                        "128 Seniors",
+                        "assets/boy.png",
+                        const SeniorProfileScreen()),
                     choiceCard(
-                      context,
-                      blueGradientStart,
-                      blueGradientEnd,
-                      "Settings",
-                      "Customize",
-                      "assets/senior.png",
-                    )
+                        context,
+                        blueGradientStart,
+                        blueGradientEnd,
+                        "Settings",
+                        "Customize",
+                        "assets/senior.png",
+                        const SettingsPage())
                   ],
                 ),
               ),

@@ -1,25 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:vitpair/senior_profile_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 Widget choiceCard(BuildContext context, Color colorStart, Color colorEnd,
-    String title, String desc, String image) {
+    String title, String desc, String image, screen) {
   return GestureDetector(
-    onTap: ()
-        // async {
-        //   const url = "https://vtop.vit.ac.in/vtop/open/page";
-        //   if (await canLaunch(url)) {
-        //     await launch(url, forceWebView: true, enableJavaScript: true);
-        //   } else {
-        //     throw 'Could not launch $url';
-        //   }
-        // },
-
-        =>
-        Navigator.push(
+    onTap: () => Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => SeniorProfileScreen(),
+        builder: (context) => screen,
       ),
     ),
     child: Container(
