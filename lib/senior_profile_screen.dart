@@ -84,7 +84,7 @@ class _SeniorProfileScreenState extends State<SeniorProfileScreen>
                   tabAlignment: TabAlignment.start,
                   indicatorPadding: const EdgeInsets.symmetric(vertical: 4),
                   indicator: const BoxDecoration(
-                    color: Color(0xffeff3ff),
+                    color: lightpurple,
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   unselectedLabelStyle: const TextStyle(
@@ -94,7 +94,7 @@ class _SeniorProfileScreenState extends State<SeniorProfileScreen>
                   ),
                   labelStyle: const TextStyle(
                     fontFamily: "Poppins",
-                    color: Color(0xffb0a2fc),
+                    color: darkerpurple,
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
