@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vitpair/senior_profile_screen.dart';
-import 'package:vitpair/settings_screen.dart';
+import 'package:vitpair/screens/senior_profile_screen.dart';
+import 'package:vitpair/screens/settings_screen.dart';
 import 'package:vitpair/utils/colors.dart';
 import 'package:vitpair/widgets/choice_card.dart';
 

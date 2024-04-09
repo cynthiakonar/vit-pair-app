@@ -9,7 +9,7 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:vitpair/settings_screen.dart';
+import 'package:vitpair/screens/settings_screen.dart';
 import 'package:vitpair/utils/colors.dart';
 import 'package:vitpair/widgets/group_tile.dart';
 
