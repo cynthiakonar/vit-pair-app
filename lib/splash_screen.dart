@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vitpair/login_screen.dart';
+import 'package:vitpair/sign_up_screen.dart';
 import 'package:vitpair/utils/colors.dart';
 
 import 'controllers/setup_controller.dart';
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen>
       const Duration(seconds: 3),
       () => Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginScreen()
+        MaterialPageRoute(builder: (context) => SignupScreen()
             // setup.route,
             ),
       ),

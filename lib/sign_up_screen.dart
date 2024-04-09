@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vitpair/controllers/register_controller.dart';
+import 'package:vitpair/login_screen.dart';
 import 'package:vitpair/screens/junior_home_screen.dart';
 import 'package:vitpair/utils/colors.dart';
-
+// import '../../../constants.dart';
 import '../../widgets/text_input_field.dart';
-import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
-  SignupScreen({Key? key}) : super(key: key);
+  SignupScreen({super.key});
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();
@@ -17,9 +17,11 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   RegisterController registerController = Get.put(RegisterController());
 
+  bool capFlag = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: background,
       body: Container(
         alignment: Alignment.center,
         child: Column(
@@ -34,9 +36,9 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
             ),
             const Text(
-              'Login',
+              'Register with VTOP credentials',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -48,12 +50,12 @@ class _SignupScreenState extends State<SignupScreen> {
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: TextInputField(
                 controller: registerController.usernameController,
-                labelText: 'Username',
-                icon: Icons.person,
+                labelText: 'VTOP Username',
+                icon: Icons.email,
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 25,
             ),
             Container(
               width: MediaQuery.of(context).size.width,
@@ -65,6 +67,26 @@ class _SignupScreenState extends State<SignupScreen> {
                 isObscure: true,
               ),
             ),
+            const SizedBox(
+              height: 30,
+            ),
+            capFlag
+                ? Image(image: AssetImage("assets/captcha.jpg"))
+                : SizedBox(),
+            const SizedBox(
+              height: 30,
+            ),
+            capFlag
+                ? Container(
+                    width: MediaQuery.of(context).size.width,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    child: TextInputField(
+                      controller: registerController.captchaController,
+                      labelText: 'Enter CAPTCHA',
+                      icon: Icons.autorenew_outlined,
+                    ),
+                  )
+                : SizedBox(),
             const SizedBox(
               height: 30,
             ),
@@ -90,9 +112,9 @@ class _SignupScreenState extends State<SignupScreen> {
                       );
                     }
                   },
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      'Login',
+                      'Register',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
@@ -109,7 +131,7 @@ class _SignupScreenState extends State<SignupScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Don\'t have an account? ',
+                  'Already have an account? ',
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -121,7 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                   child: const Text(
-                    'Register',
+                    'Login',
                     style: TextStyle(fontSize: 20, color: darkerpurple),
                   ),
                 ),

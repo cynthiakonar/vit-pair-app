@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
 class LoginController extends GetxController {
@@ -11,7 +11,7 @@ class LoginController extends GetxController {
 
   bool isLoading = false;
 
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  // final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   Future<bool> login() async {
     isLoading = true;
@@ -30,13 +30,13 @@ class LoginController extends GetxController {
       );
       print(response.body);
       if (response.statusCode == 201) {
-        final SharedPreferences? prefs = await _prefs;
-        await prefs?.setString(
-            "token", jsonDecode(response.body)['accessToken']);
-        await prefs?.setBool("isLoggedIn", true);
+        // final SharedPreferences? prefs = await _prefs;
+        // await prefs?.setString(
+        //     "token", jsonDecode(response.body)['accessToken']);
+        // await prefs?.setBool("isLoggedIn", true);
 
-        emailController.clear();
-        passwordController.clear();
+        // emailController.clear();
+        // passwordController.clear();
         return true;
       } else {
         throw jsonDecode(response.body)['message'] ?? "Unknow Error Occured";
@@ -58,10 +58,10 @@ class LoginController extends GetxController {
   }
 
   Future<bool> logout() async {
-    final _sharedPref = await SharedPreferences.getInstance();
+    // final _sharedPref = await SharedPreferences.getInstance();
     try {
-      _sharedPref.remove('token');
-      _sharedPref.remove('isLoggedIn');
+      // _sharedPref.remove('token');
+      // _sharedPref.remove('isLoggedIn');
       return true;
     } catch (e) {
       // show error pop up
