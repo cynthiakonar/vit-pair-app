@@ -15,12 +15,20 @@ class _JuniorHomeScreenState extends State<JuniorHomeScreen> {
       backgroundColor: background,
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Hey Cynthia 👋",
               style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blueGrey[900]),
+            ),
+            Text(
+              "Welcome to VIT Pair",
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.blueGrey[900],
               ),
             ),
             Center(
