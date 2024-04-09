@@ -61,6 +61,10 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
+            Image(image: AssetImage("assets/captcha.jpg")),
+            const SizedBox(
+              height: 30,
+            ),
             Container(
               width: MediaQuery.of(context).size.width - 40,
               height: 50,
