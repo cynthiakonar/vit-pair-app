@@ -16,7 +16,7 @@ class _JuniorHomeScreenState extends State<JuniorHomeScreen> {
       backgroundColor: background,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,7 +34,7 @@ class _JuniorHomeScreenState extends State<JuniorHomeScreen> {
                   color: Colors.grey[600],
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 12),
               Text(
                 "Instantly connect with a senior and receive your personalized guide to navigating college!",
                 style: TextStyle(
@@ -53,13 +53,37 @@ class _JuniorHomeScreenState extends State<JuniorHomeScreen> {
                     childAspectRatio: 0.75,
                   ),
                   children: [
-                    choiceCard(purpleGradientStart, purpleGradientEnd,
-                        "Chat with Senior"),
-                    choiceCard(orangeGradientStart, orangeGradientEnd,
-                        "Senior Profile"),
-                    choiceCard(greenGradientStart, greenGradientEnd,
-                        "Pair New Senior"),
-                    choiceCard(blueGradientStart, blueGradientEnd, "Settings")
+                    choiceCard(
+                        context,
+                        purpleGradientStart,
+                        purpleGradientEnd,
+                        "Chat with Senior",
+                        "Last seen 22h ago",
+                        "assets/connect.png"),
+                    choiceCard(
+                      context,
+                      orangeGradientStart,
+                      orangeGradientEnd,
+                      "Senior Profile",
+                      "Sahil Agarwal",
+                      "assets/girl.png",
+                    ),
+                    choiceCard(
+                      context,
+                      greenGradientStart,
+                      greenGradientEnd,
+                      "Pair New Senior",
+                      "128 Seniors",
+                      "assets/boy.png",
+                    ),
+                    choiceCard(
+                      context,
+                      blueGradientStart,
+                      blueGradientEnd,
+                      "Settings",
+                      "Customize",
+                      "assets/senior.png",
+                    )
                   ],
                 ),
               ),
