@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 
 class RegisterController extends GetxController {
   TextEditingController usernameController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   TextEditingController captchaController = TextEditingController();
 
   bool isLoading = false;
@@ -18,7 +18,7 @@ class RegisterController extends GetxController {
     var url = Uri.parse("reg");
     Map body = {
       "username": usernameController.text,
-      "phone": phoneController.text,
+      "password": passwordController.text,
       "captcha": captchaController.text.toUpperCase(),
     };
     print(body);

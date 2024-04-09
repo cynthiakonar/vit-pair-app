@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vitpair/controllers/register_controller.dart';
+import 'package:vitpair/screens/junior_home_screen.dart';
 import 'package:vitpair/utils/colors.dart';
 
 import '../../widgets/text_input_field.dart';
 import 'login_screen.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
   SignupScreen({Key? key}) : super(key: key);
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  RegisterController registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +47,7 @@ class SignupScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: TextInputField(
-                controller: _usernameController,
+                controller: registerController.usernameController,
                 labelText: 'Username',
                 icon: Icons.person,
               ),
@@ -53,7 +59,7 @@ class SignupScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: TextInputField(
-                controller: _passwordController,
+                controller: registerController.passwordController,
                 labelText: 'Password',
                 icon: Icons.lock,
                 isObscure: true,
@@ -62,33 +68,40 @@ class SignupScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            Container(
-              width: MediaQuery.of(context).size.width - 40,
-              height: 50,
-              decoration: BoxDecoration(
-                color: backgroundpurple,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(5),
+            GetBuilder<RegisterController>(builder: (controller) {
+              return Container(
+                width: MediaQuery.of(context).size.width - 40,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: backgroundpurple,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(5),
+                  ),
                 ),
-              ),
-              child: InkWell(
-                onTap: () {},
-                // authController.registerUser(
-                //     _usernameController.text,
-                //     _emailController.text,
-                //     _passwordController.text,
-                //     authController.profilePhoto),
-                child: const Center(
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
+                child: InkWell(
+                  onTap: () async {
+                    final result = await registerController.signup(context);
+                    if (result) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => JuniorHomeScreen(),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Center(
+                    child: Text(
+                      'Login',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
+              );
+            }),
             const SizedBox(
               height: 15,
             ),
