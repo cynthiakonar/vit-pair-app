@@ -16,3 +16,7 @@ const Color blueGradientEnd = Color(0xff70c9f5);
 
 const Color lightpurple = Color(0xffeff3ff);
 const Color darkerpurple = Color(0xffb0a2fc);
+
+var buttonColor = Colors.red[400];
+late Color backgroundpurple =
+    Color.fromARGB(255, 186, 171, 255).withOpacity(0.5);
