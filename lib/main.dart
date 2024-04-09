@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vitpair/junior_home_screen.dart';
+import 'package:vitpair/senior_home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
       ),
-      home: const JuniorHomeScreen(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
