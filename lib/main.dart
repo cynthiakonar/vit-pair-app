@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
       ),
-      home: const HomePage(),
+      home: const JuniorHomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
