@@ -10,6 +10,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:vitpair/settings_screen.dart';
+import 'package:vitpair/utils/colors.dart';
 import 'package:vitpair/widgets/group_tile.dart';
 
 class SeniorHomeScreen extends StatefulWidget {
@@ -121,7 +122,7 @@ class _SeniorHomeScreenState extends State<SeniorHomeScreen> {
         ],
         elevation: 0,
         centerTitle: false,
-        backgroundColor: const Color.fromARGB(255, 154, 132, 255),
+        backgroundColor: Color.fromARGB(255, 186, 171, 255),
         title: const Text(
           textAlign: TextAlign.left,
           "VIT Pair",
@@ -139,14 +140,15 @@ class _SeniorHomeScreenState extends State<SeniorHomeScreen> {
             // onTabChange: ,
             backgroundColor: const Color.fromARGB(255, 255, 255, 255),
             color: Colors.grey,
-            activeColor: Colors.white,
-            tabBackgroundColor: const Color.fromRGBO(169, 151, 252, 1),
+            activeColor: darkerpurple,
+            tabBackgroundColor:
+                Color.fromARGB(255, 186, 171, 255).withOpacity(0.5),
             padding: const EdgeInsets.all(16),
 
             tabs: const [
               GButton(
-                icon: Icons.home,
-                text: "Home",
+                icon: Icons.message_rounded,
+                text: "Chats",
               ),
               GButton(
                 icon: Icons.search,
