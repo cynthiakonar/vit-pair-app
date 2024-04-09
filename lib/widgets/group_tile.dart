@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:vitpair/widgets/widgets.dart';
 
-import '../senior_chat_page.dart';
+import '../screens/senior_chat_page.dart';
 
 class GroupTile extends StatefulWidget {
   final String userName;
