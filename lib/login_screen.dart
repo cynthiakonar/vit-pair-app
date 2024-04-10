@@ -35,9 +35,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             const Text(
-              'Login',
+              'Login using VTOP Credentials',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: TextInputField(
-                controller: loginController.emailController,
+                controller: loginController.usernameController,
                 labelText: 'Username',
                 icon: Icons.person,
               ),
@@ -81,15 +81,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 child: InkWell(
                   onTap: () async {
-                    final result = await loginController.login();
-                    if (result) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => JuniorHomeScreen(),
-                        ),
-                      );
-                    }
+                    // final result = await loginController.login();
+                    // if (result) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => JuniorHomeScreen(),
+                      ),
+                    );
+                    // }
                   },
                   child: const Center(
                     child: Text(

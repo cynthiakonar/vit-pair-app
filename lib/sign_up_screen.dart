@@ -17,7 +17,7 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   RegisterController registerController = Get.put(RegisterController());
 
-  bool capFlag = true;
+  bool capFlag = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

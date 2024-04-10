@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vitpair/screens/senior_chat_page.dart';
 import 'package:vitpair/screens/senior_profile_screen.dart';
 import 'package:vitpair/screens/settings_screen.dart';
 import 'package:vitpair/utils/colors.dart';
@@ -62,7 +63,7 @@ class _JuniorHomeScreenState extends State<JuniorHomeScreen> {
                         "Chat with Senior",
                         "Last seen 22h ago",
                         "assets/connect.png",
-                        const SeniorProfileScreen()),
+                        ChatPage()),
                     choiceCard(
                         context,
                         orangeGradientStart,

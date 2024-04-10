@@ -5,19 +5,20 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:vitpair/widgets/message_tile.dart';
 import 'package:vitpair/widgets/widgets.dart';
 
 class ChatPage extends StatefulWidget {
-  final String groupId;
-  final String groupName;
-  final String userName;
-  const ChatPage(
-      {Key? key,
-      required this.groupId,
-      required this.groupName,
-      required this.userName})
-      : super(key: key);
+  // final String groupId;
+  // final String groupName;
+  // final String userName;
+  // const ChatPage(
+  //     {Key? key,
+  //     required this.groupId,
+  //     required this.groupName,
+  //     required this.userName})
+  //     : super(key: key);
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -53,7 +54,7 @@ class _ChatPageState extends State<ChatPage> {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: Text(widget.groupName),
+        title: Text("Sahil Agrawal"),
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(
@@ -69,50 +70,68 @@ class _ChatPageState extends State<ChatPage> {
               icon: const Icon(Icons.info))
         ],
       ),
-      body: Stack(
+      body: Column(
         children: <Widget>[
           // chat messages here
-          chatMessages(),
-          Container(
-            alignment: Alignment.bottomCenter,
-            width: MediaQuery.of(context).size.width,
+          const MessageTile(
+            message: "hi",
+            sender: "sahil",
+            sentByMe: false,
+          ),
+          const MessageTile(
+            message: "how are you doing",
+            sender: "sahil",
+            sentByMe: false,
+          ),
+          const MessageTile(
+            message: "I am doing good, just finished my assignments!!",
+            sender: "You",
+            sentByMe: true,
+          ),
+          // chatMessages(),
+          Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+              alignment: Alignment.bottomCenter,
               width: MediaQuery.of(context).size.width,
-              color: Colors.grey[700],
-              child: Row(children: [
-                Expanded(
-                    child: TextFormField(
-                  controller: messageController,
-                  style: const TextStyle(color: Colors.white),
-                  decoration: const InputDecoration(
-                    hintText: "Send a message...",
-                    hintStyle: TextStyle(color: Colors.white, fontSize: 16),
-                    border: InputBorder.none,
-                  ),
-                )),
-                const SizedBox(
-                  width: 12,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    sendMessage();
-                  },
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(30),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
+                width: MediaQuery.of(context).size.width,
+                color: Colors.grey[700],
+                child: Row(children: [
+                  Expanded(
+                      child: TextFormField(
+                    controller: messageController,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
+                      hintText: "Send a message...",
+                      hintStyle: TextStyle(color: Colors.white, fontSize: 16),
+                      border: InputBorder.none,
                     ),
-                    child: const Center(
-                        child: Icon(
-                      Icons.send,
-                      color: Colors.white,
-                    )),
+                  )),
+                  const SizedBox(
+                    width: 12,
                   ),
-                )
-              ]),
+                  GestureDetector(
+                    onTap: () {
+                      sendMessage();
+                    },
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: const Center(
+                          child: Icon(
+                        Icons.send,
+                        color: Colors.white,
+                      )),
+                    ),
+                  )
+                ]),
+              ),
             ),
           )
         ],
@@ -128,11 +147,16 @@ class _ChatPageState extends State<ChatPage> {
             ? ListView.builder(
                 itemCount: snapshot.data.docs.length,
                 itemBuilder: (context, index) {
-                  return MessageTile(
-                      message: snapshot.data.docs[index]['message'],
-                      sender: snapshot.data.docs[index]['sender'],
-                      sentByMe: widget.userName ==
-                          snapshot.data.docs[index]['sender']);
+                  return Container();
+                  // MessageTile(
+                  //   message: "hi",
+                  //   sender: "monish",
+                  //   sentByMe: true,
+                  // message: snapshot.data.docs[index]['message'],
+                  // sender: snapshot.data.docs[index]['sender'],
+                  // sentByMe: widget.userName ==
+                  //     snapshot.data.docs[index]['sender']
+                  // );
                 },
               )
             : Container();
@@ -142,11 +166,11 @@ class _ChatPageState extends State<ChatPage> {
 
   sendMessage() {
     if (messageController.text.isNotEmpty) {
-      Map<String, dynamic> chatMessageMap = {
-        "message": messageController.text,
-        "sender": widget.userName,
-        "time": DateTime.now().millisecondsSinceEpoch,
-      };
+      // Map<String, dynamic> chatMessageMap = {
+      //   "message": messageController.text,
+      //   "sender": widget.userName,
+      //   "time": DateTime.now().millisecondsSinceEpoch,
+      // };
 
       // DatabaseService().sendMessage(widget.groupId, chatMessageMap);
       setState(() {

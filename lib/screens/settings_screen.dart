@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:vitpair/controllers/login_controller.dart';
+import 'package:vitpair/login_screen.dart';
 import 'package:vitpair/utils/colors.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -13,6 +16,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  LoginController loginController = Get.put(LoginController());
   final interests = [
     "ITP",
     "PUBG",
@@ -59,11 +63,13 @@ class _SettingsPageState extends State<SettingsPage> {
                           ),
                           IconButton(
                             onPressed: () async {
-                              // await authService.signOut();
-                              // Navigator.of(context).pushAndRemoveUntil(
-                              //     MaterialPageRoute(
-                              //         builder: (context) => const LoginPage()),
-                              //     (route) => false);
+                              // var res = await loginController.logout();
+                              // if (res) {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen()),
+                                  (route) => false);
+                              // }
                             },
                             icon: const Icon(
                               Icons.done,

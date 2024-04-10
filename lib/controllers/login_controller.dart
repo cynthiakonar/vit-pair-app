@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 
 class LoginController extends GetxController {
   TextEditingController passwordController = new TextEditingController();
-  TextEditingController emailController = new TextEditingController();
+  TextEditingController usernameController = new TextEditingController();
 
   bool isLoading = false;
 
@@ -17,7 +17,7 @@ class LoginController extends GetxController {
     isLoading = true;
     update();
     Map data = {
-      "email": emailController.text.trim(),
+      "username": usernameController.text.trim(),
       "password": passwordController.text.trim(),
     };
     var url = Uri.parse("login");
