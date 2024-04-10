@@ -76,7 +76,7 @@ class _SignupScreenState extends State<SignupScreen> {
               height: 30,
             ),
             Obx(
-              () => registerController.capFlag
+              () => !registerController.isLoading
                   ? const Image(image: AssetImage("assets/captcha.jpg"))
                   : const SizedBox(),
             ),
