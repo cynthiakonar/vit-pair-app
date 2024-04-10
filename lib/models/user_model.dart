@@ -23,6 +23,7 @@ class User {
   String? careerInterests;
   double? cgpa;
   String? highSchoolBoard;
+  String? stream;
   List<String>? areaOfInterests;
 
   User({
@@ -40,6 +41,7 @@ class User {
     this.careerInterests,
     this.cgpa,
     this.highSchoolBoard,
+    this.stream,
     this.areaOfInterests,
   });
 
@@ -58,6 +60,7 @@ class User {
         careerInterests: json["Career Interests"],
         cgpa: json["CGPA"]?.toDouble(),
         highSchoolBoard: json["High School Board"],
+        stream: json["Stream"],
         areaOfInterests:
             List<String>.from(json["Area of Interests"].map((x) => x)),
       );
@@ -77,6 +80,7 @@ class User {
         "Career Interests": careerInterests,
         "CGPA": cgpa,
         "High School Board": highSchoolBoard,
+        "Stream": stream,
         "Area of Interests": areaOfInterests != null
             ? List<dynamic>.from(areaOfInterests!.map((x) => x))
             : null,

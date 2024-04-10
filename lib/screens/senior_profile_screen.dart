@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vitpair/controllers/vtop.dart';
 import 'package:vitpair/utils/colors.dart';
 
 class SeniorProfileScreen extends StatefulWidget {
@@ -12,7 +11,6 @@ class SeniorProfileScreen extends StatefulWidget {
 
 class _SeniorProfileScreenState extends State<SeniorProfileScreen>
     with SingleTickerProviderStateMixin {
-  VtopController controller = Get.put(VtopController());
   late final TabController _tabCont;
   final _tabs = ['About', 'Academics'];
   final interests = [
@@ -30,7 +28,6 @@ class _SeniorProfileScreenState extends State<SeniorProfileScreen>
   @override
   void initState() {
     _tabCont = TabController(length: 2, vsync: this);
-    controller.getVtop();
     super.initState();
   }
 

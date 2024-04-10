@@ -1,10 +1,7 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:vitpair/controllers/login_controller.dart';
+import 'package:vitpair/controllers/register_controller.dart';
 import 'package:vitpair/login_screen.dart';
 import 'package:vitpair/utils/colors.dart';
 
@@ -16,18 +13,9 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  LoginController loginController = Get.put(LoginController());
-  final interests = [
-    "ITP",
-    "PUBG",
-    "Web Programming",
-    "Music",
-    "Dance",
-    "Cricket",
-    "AI",
-    "Football",
-    "Cats"
-  ];
+  // LoginController loginController = Get.put(LoginController());
+  RegisterController registerController = Get.put(RegisterController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,7 +104,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Pilli ",
+                      registerController.user.name ?? "Pilli",
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.w600,
@@ -124,7 +112,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "(Your profile)",
+                      "  (Your profile)",
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -145,7 +133,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "+91 9999999999",
+                      registerController.user.phoneNumber ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -165,7 +153,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "sahil.agarwal@gmail.com",
+                      registerController.user.mailId ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -185,7 +173,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "22BCE4058",
+                      registerController.user.registrationNumber ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -205,7 +193,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "Computer Science",
+                      registerController.user.stream ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -225,7 +213,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "VIT Vellore",
+                      "VIT Chennai",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -245,7 +233,8 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "2024",
+                      (registerController.user.yearOfGraduation ?? "--")
+                          .toString(),
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -265,7 +254,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "No",
+                      registerController.user.nri ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -285,7 +274,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "Placement",
+                      registerController.user.careerInterests ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -305,7 +294,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "CBSE",
+                      registerController.user.highSchoolBoard ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -325,7 +314,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "Female",
+                      registerController.user.gender ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -345,7 +334,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "A",
+                      registerController.user.hostelBlock ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -365,7 +354,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "--",
+                      registerController.user.religion ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -385,7 +374,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "Hindi",
+                      registerController.user.nativeLanguage ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -405,7 +394,7 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                     ),
                     Text(
-                      "Mumbai",
+                      registerController.user.nativeStateOrUt ?? "--",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[600],
@@ -421,21 +410,28 @@ class _SettingsPageState extends State<SettingsPage> {
                     color: Colors.grey[600],
                   ),
                 ),
-                Wrap(
-                  children: interests.map((tag) {
-                    return Container(
-                      margin: const EdgeInsets.only(right: 8, top: 10),
-                      child: Text(
-                        tag == interests.last ? tag : "$tag,",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.bold,
-                        ),
+                registerController.user.areaOfInterests == null
+                    ? Text("--")
+                    : Wrap(
+                        children:
+                            registerController.user.areaOfInterests!.map((tag) {
+                          return Container(
+                            margin: const EdgeInsets.only(right: 8, top: 10),
+                            child: Text(
+                              tag ==
+                                      registerController
+                                          .user.areaOfInterests!.last
+                                  ? tag
+                                  : "$tag,",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey[600],
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          );
+                        }).toList(),
                       ),
-                    );
-                  }).toList(),
-                ),
                 const SizedBox(height: 20),
               ],
             ),
