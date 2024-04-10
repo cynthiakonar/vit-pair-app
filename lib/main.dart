@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vitpair/screens/form_screen.dart';
 
 import 'package:vitpair/sign_up_screen.dart';
 import 'package:vitpair/screens/junior_home_screen.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Poppins',
       ),
-      home: const SplashScreen(),
+      home: const InterestForm(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,49 +1,49 @@
 // To parse this JSON data, do
 //
-//     final senior = seniorFromJson(jsonString);
+//     final user = userFromJson(jsonString);
 
 import 'dart:convert';
 
-Senior seniorFromJson(String str) => Senior.fromJson(json.decode(str));
+User userFromJson(String str) => User.fromJson(json.decode(str));
 
-String seniorToJson(Senior data) => json.encode(data.toJson());
+String userToJson(User data) => json.encode(data.toJson());
 
-class Senior {
-  String name;
-  String phoneNumber;
-  String mailId;
-  String gender;
-  String registrationNumber;
-  int yearOfGraduation;
-  String hostelBlock;
-  String nri;
-  String religion;
-  String nativeLanguage;
-  String nativeStateOrUt;
-  String careerInterests;
-  double cgpa;
-  String highSchoolBoard;
-  List<String> areaOfInterests;
+class User {
+  String? name;
+  String? phoneNumber;
+  String? mailId;
+  String? gender;
+  String? registrationNumber;
+  int? yearOfGraduation;
+  String? hostelBlock;
+  String? nri;
+  String? religion;
+  String? nativeLanguage;
+  String? nativeStateOrUt;
+  String? careerInterests;
+  double? cgpa;
+  String? highSchoolBoard;
+  List<String>? areaOfInterests;
 
-  Senior({
-    required this.name,
-    required this.phoneNumber,
-    required this.mailId,
-    required this.gender,
-    required this.registrationNumber,
-    required this.yearOfGraduation,
-    required this.hostelBlock,
-    required this.nri,
-    required this.religion,
-    required this.nativeLanguage,
-    required this.nativeStateOrUt,
-    required this.careerInterests,
-    required this.cgpa,
-    required this.highSchoolBoard,
-    required this.areaOfInterests,
+  User({
+    this.name,
+    this.phoneNumber,
+    this.mailId,
+    this.gender,
+    this.registrationNumber,
+    this.yearOfGraduation,
+    this.hostelBlock,
+    this.nri,
+    this.religion,
+    this.nativeLanguage,
+    this.nativeStateOrUt,
+    this.careerInterests,
+    this.cgpa,
+    this.highSchoolBoard,
+    this.areaOfInterests,
   });
 
-  factory Senior.fromJson(Map<String, dynamic> json) => Senior(
+  factory User.fromJson(Map<String, dynamic> json) => User(
         name: json["Name"],
         phoneNumber: json["Phone Number"],
         mailId: json["Mail ID"],
@@ -77,6 +77,8 @@ class Senior {
         "Career Interests": careerInterests,
         "CGPA": cgpa,
         "High School Board": highSchoolBoard,
-        "Area of Interests": List<dynamic>.from(areaOfInterests.map((x) => x)),
+        "Area of Interests": areaOfInterests != null
+            ? List<dynamic>.from(areaOfInterests!.map((x) => x))
+            : null,
       };
 }

@@ -3,9 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:vitpair/models/senior_model.dart';
 import 'package:vitpair/utils/urls.dart';
 
 class RegisterController extends GetxController {
+  User user = new User();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController captchaController = TextEditingController();
@@ -52,12 +54,17 @@ class RegisterController extends GetxController {
     isLoading(true);
     update();
 
-    var url = Uri.parse("reg");
-    Map body = {
-      "username": usernameController.text,
-      "password": passwordController.text,
-      "captcha": captchaController.text.toUpperCase(),
-    };
+    var url = Uri.parse(capFlag.value ? URL.registerC : URL.registerWC);
+    Map body = capFlag.value
+        ? {
+            "username": usernameController.text,
+            "password": passwordController.text,
+            "captcha": captchaController.text.toUpperCase(),
+          }
+        : {
+            "username": usernameController.text,
+            "password": passwordController.text,
+          };
     print(body);
     var response;
     try {
@@ -70,7 +77,7 @@ class RegisterController extends GetxController {
       );
       if (response.statusCode == 200) {
         print(response.body);
-
+        user = userFromJson(response);
         return true;
       } else {
         print(response);

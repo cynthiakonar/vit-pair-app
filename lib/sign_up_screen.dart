@@ -4,6 +4,7 @@ import 'package:vitpair/controllers/register_controller.dart';
 import 'package:vitpair/login_screen.dart';
 import 'package:vitpair/screens/junior_home_screen.dart';
 import 'package:vitpair/utils/colors.dart';
+import 'package:vitpair/utils/urls.dart';
 // import '../../../constants.dart';
 import '../../widgets/text_input_field.dart';
 
@@ -78,7 +79,7 @@ class _SignupScreenState extends State<SignupScreen> {
             Obx(
               () => !registerController.isLoading.value
                   ? registerController.capFlag.value
-                      ? const Image(image: AssetImage("assets/captcha.jpg"))
+                      ? const Image(image: NetworkImage(URL.captcha))
                       : const SizedBox()
                   : const Center(
                       child: CircularProgressIndicator(),
@@ -87,19 +88,23 @@ class _SignupScreenState extends State<SignupScreen> {
             const SizedBox(
               height: 30,
             ),
-            // Obx(
-            //   () => registerController.capFlag
-            //       ? Container(
-            //           width: MediaQuery.of(context).size.width,
-            //           margin: const EdgeInsets.symmetric(horizontal: 20),
-            //           child: TextInputField(
-            //             controller: registerController.captchaController,
-            //             labelText: 'Enter CAPTCHA',
-            //             icon: Icons.autorenew_outlined,
-            //           ),
-            //         )
-            //       : const SizedBox(),
-            // ),
+            Obx(
+              () => !registerController.isLoading.value
+                  ? registerController.capFlag.value
+                      ? Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: const EdgeInsets.symmetric(horizontal: 20),
+                          child: TextInputField(
+                            controller: registerController.captchaController,
+                            labelText: 'Enter CAPTCHA',
+                            icon: Icons.autorenew_outlined,
+                          ),
+                        )
+                      : const SizedBox()
+                  : const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+            ),
             const SizedBox(
               height: 30,
             ),
