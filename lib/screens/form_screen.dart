@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vitpair/utils/colors.dart';
 
 class InterestForm extends StatefulWidget {
   const InterestForm({super.key});
@@ -40,7 +41,24 @@ class _InterestFormState extends State<InterestForm> {
               },
               child: Text("add"),
             ),
-            Text(text.isNotEmpty ? text.toString() : ""),
+            Wrap(
+              children: text.map((tag) {
+                return Container(
+                  margin: const EdgeInsets.only(right: 8, top: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: backgroundpurple),
+                  child: Text(
+                    tag,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.grey[600],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
           ],
         ),
       ),
