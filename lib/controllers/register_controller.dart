@@ -77,7 +77,7 @@ class RegisterController extends GetxController {
       );
       if (response.statusCode == 200) {
         print(response.body);
-        user = userFromJson(response);
+        user = User.fromJson(jsonDecode(response.body));
         return true;
       } else {
         print(response);
