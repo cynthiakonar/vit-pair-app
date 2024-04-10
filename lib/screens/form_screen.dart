@@ -50,16 +50,30 @@ class _InterestFormState extends State<InterestForm> {
                   children: text.map((tag) {
                     return Container(
                       margin: const EdgeInsets.only(right: 8, top: 10),
+                      padding: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(5),
                           color: backgroundpurple),
-                      child: Text(
-                        tag,
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey[600],
-                          fontWeight: FontWeight.bold,
-                        ),
+                      child: Row(
+                        children: [
+                          Text(
+                            tag,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                text.remove(tag);
+                              });
+                            },
+                            child: const Icon(Icons.close),
+                          ),
+                        ],
                       ),
                     );
                   }).toList(),
