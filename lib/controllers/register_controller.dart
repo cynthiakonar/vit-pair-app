@@ -10,12 +10,12 @@ class RegisterController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController captchaController = TextEditingController();
 
-  bool isLoading = false;
+  var isLoading = false.obs;
 
-  bool capFlag = false;
+  var capFlag = false.obs;
 
   Future<bool> getCaptcha() async {
-    isLoading = true;
+    isLoading(true);
     update();
     var url = Uri.parse(URL.captcha);
     var response;
@@ -23,7 +23,7 @@ class RegisterController extends GetxController {
       response = await http.get(url);
       if (response.statusCode == 200) {
         print(response.body);
-        capFlag = true;
+        capFlag(true);
         update();
         return true;
       } else {
@@ -43,13 +43,13 @@ class RegisterController extends GetxController {
       );
       return false;
     } finally {
-      isLoading = false;
+      isLoading(false);
       update();
     }
   }
 
   Future<bool> signup(BuildContext context) async {
-    isLoading = true;
+    isLoading(true);
     update();
 
     var url = Uri.parse("reg");
@@ -89,7 +89,7 @@ class RegisterController extends GetxController {
       );
       return false;
     } finally {
-      isLoading = false;
+      isLoading(false);
       update();
     }
   }

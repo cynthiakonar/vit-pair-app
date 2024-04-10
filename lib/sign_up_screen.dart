@@ -76,26 +76,30 @@ class _SignupScreenState extends State<SignupScreen> {
               height: 30,
             ),
             Obx(
-              () => !registerController.isLoading
-                  ? const Image(image: AssetImage("assets/captcha.jpg"))
-                  : const SizedBox(),
+              () => !registerController.isLoading.value
+                  ? registerController.capFlag.value
+                      ? const Image(image: AssetImage("assets/captcha.jpg"))
+                      : const SizedBox()
+                  : const Center(
+                      child: CircularProgressIndicator(),
+                    ),
             ),
             const SizedBox(
               height: 30,
             ),
-            Obx(
-              () => registerController.capFlag
-                  ? Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
-                      child: TextInputField(
-                        controller: registerController.captchaController,
-                        labelText: 'Enter CAPTCHA',
-                        icon: Icons.autorenew_outlined,
-                      ),
-                    )
-                  : const SizedBox(),
-            ),
+            // Obx(
+            //   () => registerController.capFlag
+            //       ? Container(
+            //           width: MediaQuery.of(context).size.width,
+            //           margin: const EdgeInsets.symmetric(horizontal: 20),
+            //           child: TextInputField(
+            //             controller: registerController.captchaController,
+            //             labelText: 'Enter CAPTCHA',
+            //             icon: Icons.autorenew_outlined,
+            //           ),
+            //         )
+            //       : const SizedBox(),
+            // ),
             const SizedBox(
               height: 30,
             ),
