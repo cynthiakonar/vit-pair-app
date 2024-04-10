@@ -17,7 +17,12 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   RegisterController registerController = Get.put(RegisterController());
 
-  bool capFlag = false;
+  @override
+  void initState() {
+    super.initState();
+    registerController.getCaptcha();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,23 +75,27 @@ class _SignupScreenState extends State<SignupScreen> {
             const SizedBox(
               height: 30,
             ),
-            capFlag
-                ? Image(image: AssetImage("assets/captcha.jpg"))
-                : SizedBox(),
+            Obx(
+              () => registerController.capFlag
+                  ? const Image(image: AssetImage("assets/captcha.jpg"))
+                  : const SizedBox(),
+            ),
             const SizedBox(
               height: 30,
             ),
-            capFlag
-                ? Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    child: TextInputField(
-                      controller: registerController.captchaController,
-                      labelText: 'Enter CAPTCHA',
-                      icon: Icons.autorenew_outlined,
-                    ),
-                  )
-                : SizedBox(),
+            Obx(
+              () => registerController.capFlag
+                  ? Container(
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      child: TextInputField(
+                        controller: registerController.captchaController,
+                        labelText: 'Enter CAPTCHA',
+                        icon: Icons.autorenew_outlined,
+                      ),
+                    )
+                  : const SizedBox(),
+            ),
             const SizedBox(
               height: 30,
             ),
@@ -107,12 +116,12 @@ class _SignupScreenState extends State<SignupScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => JuniorHomeScreen(),
+                          builder: (context) => const JuniorHomeScreen(),
                         ),
                       );
                     }
                   },
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Register',
                       style: TextStyle(
